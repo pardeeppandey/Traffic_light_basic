@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            height: 20px;
+            width: 60px;
+        }
+
+        #main {
+            height: 300px;
+            width: 300px;
+            border: 2px solid red;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            transform: rotateZ(90deg);
+            position: relative;
+            left: 500px;
+            margin-top: 50px;
+            border-radius: 20%;
+            background-color: white;
+        }
+
+        .inmain {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 1px solid red;
+
+        }
+
+        .top {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 100px;
+
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            margin-left: -50px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        body {
+            background-color: rgb(191, 189, 218);
+        }
+    </style>
+</head>
+
+<body>
+    <H1>Traffic Light</H1>
+    <div id="main">
+        <div class="inmain" id="red"></div>
+        <div class="inmain" id="green"></div>
+        <div class="inmain" id="yellow"></div>
+    </div>
+
+    <div class="top">
+        <span>RED</span>
+        <button onclick="r(this)" id="rbt">Press</button>
+        <br>
+        <span>GREEN</span>
+        <button onclick="g(this)" id="gbt">Press</button>
+        <br>
+        <span>YELLOW</span>
+        <button onclick="y(this)" id="ybt">Press</button>
+        <br>
+        <span>ALL</span>
+        <button onclick="a(this)" id="abt">Press</button>
+        <br>
+        <span>ALT</span>
+        <button onclick="al(this)" id="albt">Press</button>
+        <br>
+    </div>
+
+    <script>
+        function reseta() {
+            document.getElementById('red').style.background = '';
+            document.getElementById('green').style.background = '';
+            document.getElementById('yellow').style.background = '';
+            document.getElementById('rbt').style.background = '';
+            document.getElementById('ybt').style.background = '';
+            document.getElementById('gbt').style.background = '';
+            document.getElementById('abt').style.background = '';
+            document.getElementById('albt').style.background = '';
+
+        }
+        function r(el) {
+            reseta();
+            document.getElementById('red').style.background = 'red';
+            el.style.background = 'red';
+        }
+        function g(el) {
+            reseta();
+            document.getElementById('green').style.background = 'green';
+            el.style.background = 'green';
+        }
+        function y(el) {
+            reseta();
+            document.getElementById('yellow').style.background = 'yellow';
+            el.style.background = 'yellow';
+        }
+        function a(el) {
+            reseta();
+            document.getElementById('red').style.background = 'red';
+            document.getElementById('green').style.background = 'green';
+            document.getElementById('yellow').style.background = 'yellow';
+            el.style.background = 'linear-gradient(to right,red,green,yellow)';
+        }
+
+        document.getElementById('albt').addEventListener('click', () => {
+            reseta();
+            var p = setInterval(() => {
+                document.getElementById('red').style.background = 'red';
+                document.getElementById('green').style.background = '';
+                document.getElementById('yellow').style.background = '';
+                document.getElementById('albt').style.background = 'red';
+                clearInterval(p);
+            }, 500);
+            var q = setInterval(() => {
+                document.getElementById('red').style.background = '';
+                document.getElementById('green').style.background = 'green';
+                document.getElementById('yellow').style.background = '';
+                document.getElementById('albt').style.background = 'green';
+                clearInterval(q);
+            }, 1000);
+            var r = setInterval(() => {
+                document.getElementById('red').style.background = '';
+                document.getElementById('green').style.background = '';
+                document.getElementById('yellow').style.background = 'yellow';
+                document.getElementById('albt').style.background = 'yellow';
+                clearInterval(r);
+            }, 1500);
+            var s = setInterval(() => {
+                document.getElementById('red').style.background = '';
+                document.getElementById('green').style.background = '';
+                document.getElementById('yellow').style.background = '';
+                document.getElementById('albt').style.background = '';
+                clearInterval(s);
+            }, 2000);
+
+        });
+
+    </script>
+</body>
+
+</html>
